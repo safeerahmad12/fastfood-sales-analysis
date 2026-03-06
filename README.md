@@ -1,27 +1,26 @@
-# Fast Food Sales Analysis
+# Fast Food AI Sales Dashboard
 
-This project analyzes fast food sales data to discover business insights.
+This project is an interactive analytics dashboard built with Python and Streamlit.
 
-## Key Insights
-- Revenue trends over time
-- Busiest sales hours
-- Top selling menu items
-- Customer purchasing patterns
+It analyzes a synthetic fast-food POS dataset and provides insights such as:
+
+- Revenue trends
+- Busiest hours
+- Category performance
+- Employee performance
+- Machine learning predictions
+
+## Live Dashboard
+
+Open the live dashboard here:
+
+https://fastfood-sales-analysis-fygx36b7dy7dwagxauxyyg.streamlit.app
 
 ## Technologies Used
+
 - Python
-- Pandas
-- Matplotlib
-- Jupyter Notebook
+- pandas
+- numpy
+- Plotly
 - Streamlit
-
-## Project Structure
-
-data/ → dataset used for analysis  
-notebooks/ → data exploration and analysis  
-scripts/ → helper scripts  
-dashboard/ → visualizations
-
-## Goal
-
-The goal of this project is to analyze sales data and extract insights that can help improve business decisions.
+- scikit-learn
