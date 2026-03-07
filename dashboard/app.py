@@ -1,16 +1,13 @@
-import sys, os
 import os
+import sys
 import streamlit as st
-st.success("THIS IS THE CORRECT APP.PY ✔️")
 
-st.write("Loaded file:", os.path.abspath(__file__))
 # Make sure Python can see the dashboard folder
 CURRENT_DIR = os.path.dirname(__file__)
 if CURRENT_DIR not in sys.path:
     sys.path.append(CURRENT_DIR)
 
-import streamlit as st
-from utils import load_data 
+from utils import load_data
 
 # ==========================================================
 # 🔥 GLOBAL PAGE CONFIG
@@ -24,7 +21,8 @@ st.set_page_config(
 # ==========================================================
 # 🔥 GLOBAL NEON GLASS THEME
 # ==========================================================
-st.markdown("""
+st.markdown(
+    """
 <style>
 
 :root {
@@ -34,6 +32,9 @@ st.markdown("""
     --border: rgba(255,255,255,0.20);
     --text: #e7e7e7;
     --accent: #77f6ff;
+    --sidebar-text: #f5f7ff;
+    --sidebar-muted: rgba(245, 247, 255, 0.78);
+    --sidebar-active: rgba(119, 246, 255, 0.18);
 }
 
 /* APP BACKGROUND */
@@ -44,9 +45,46 @@ st.markdown("""
 
 /* SIDEBAR */
 [data-testid="stSidebar"] {
-    background: rgba(22,22,22,0.55);
+    background: linear-gradient(180deg, rgba(7, 11, 22, 0.95), rgba(10, 16, 30, 0.92));
     backdrop-filter: blur(18px);
     border-right: 1px solid var(--border);
+}
+
+[data-testid="stSidebar"] * {
+    color: var(--sidebar-text) !important;
+}
+
+/* Sidebar search/input */
+[data-testid="stSidebar"] input {
+    color: var(--sidebar-text) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Sidebar section text */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div {
+    color: var(--sidebar-text) !important;
+}
+
+/* Sidebar radio options */
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    background: transparent;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Selected sidebar navigation */
+[data-testid="stSidebar"] [data-baseweb="radio"] div[aria-checked="true"] {
+    background: var(--sidebar-active) !important;
+    border-radius: 12px;
 }
 
 /* TITLE */
@@ -93,7 +131,9 @@ li {
 }
 
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # ==========================================================
 # 🔥 LOAD DATA
@@ -105,13 +145,16 @@ df = load_data()
 # ==========================================================
 st.markdown("<div class='page-title'>Fast Food AI Sales Dashboard</div>", unsafe_allow_html=True)
 
-st.markdown("""
+st.markdown(
+    """
 <p class='subtitle'>
 A visually enhanced Bachelor-level project dashboard built using a synthetic fast-food POS dataset.
 Explore KPIs, category insights, employee performance, bestselling items, weather impact analysis,
 and advanced ML-driven predictions — all inside a modern neon-glass interface.
 </p>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # ==========================================================
 # 🔥 PROJECT SCOPE + TECH STACK
@@ -121,24 +164,28 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("<div class='info-card'>", unsafe_allow_html=True)
     st.markdown("<div class='card-title'>📘 Project Scope</div>", unsafe_allow_html=True)
-    st.markdown("""
+    st.markdown(
+        """
 - Data cleaning + feature engineering  
 - Multi-page interactive dashboard  
 - Trend exploration (time, category, item, employee)  
 - Predictive modelling (RandomForest, KMeans)  
 - Context analysis: weather & time-of-day  
-    """)
+        """
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 with col2:
     st.markdown("<div class='info-card'>", unsafe_allow_html=True)
     st.markdown("<div class='card-title'>🧠 Tech Stack</div>", unsafe_allow_html=True)
-    st.markdown("""
+    st.markdown(
+        """
 - **Python** · pandas · numpy  
 - **Plotly** interactive visuals  
-- **Streamlit multipage app**  
+- **Streamlit** multipage app  
 - **scikit-learn** ML (RandomForest, KMeans)  
-    """)
+        """
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ==========================================================
@@ -147,14 +194,16 @@ with col2:
 st.markdown("<div class='info-card'>", unsafe_allow_html=True)
 st.markdown("<div class='card-title'>✅ How to Use This App</div>", unsafe_allow_html=True)
 
-st.markdown("""
+st.markdown(
+    """
 1. **Overview** – high-level KPIs & time trends  
 2. **Category Analysis** – revenue by category  
 3. **Employee Performance** – staff revenue distribution  
 4. **Item Insights** – bestseller & pricing patterns  
 5. **Predictive Analytics** – ML revenue prediction & segmentation  
 6. **Time & Weather** – how external conditions influence revenue  
-""")
+"""
+)
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ==========================================================
